@@ -6,23 +6,23 @@
   <h3>マイリスト</h3>
   <table class="table">
     <thead>
-    <tr>
-      <th>場所</th>
-      <td>緯度</td>
-      <td>経度</td>
-      <td colspan="2"></td>
-    </tr>
+      <tr>
+        <th>場所</th>
+        <td>緯度</td>
+        <td>経度</td>
+        <td colspan="2"></td>
+      </tr>
     </thead>
     <tbody id="map-list">
-    <% @places.each_with_index do |place, index| %>
-      <tr id="place-id-<%= index %>">
-        <th class="title"><%= place[:title] %></th>
-        <td class="latitude"><%= place[:latitude] %></td>
-        <td class="longitude"><%= place[:longitude] %></td>
-        <td class="show_button"><%= link_to "詳細", place, data: { "turbolinks" => false }, class: "btn btn-info" %></td>
-        <td class="delete_button"><%= link_to "削除", place, method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-danger" %></td>
-      </tr>
-    <% end %>
+      <% @places.each_with_index do |place, index| %>
+        <tr id="place-id-<%= index %>">
+          <th class="title"><%= place[:title] %></th>
+          <td class="latitude"><%= place[:latitude] %></td>
+          <td class="longitude"><%= place[:longitude] %></td>
+          <td class="show_button"><%= link_to "詳細", place, data: { "turbolinks" => false }, class: "btn btn-info" %></td>
+          <td class="delete_button"><%= link_to "削除", place, method: :delete, data: { confirm: "削除しますか?" }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 <% end %>
