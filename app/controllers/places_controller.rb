@@ -1,4 +1,9 @@
 class PlacesController < ApplicationController
+  def show
+    @place = Place.find(params[:id])
+    add_latitude_longitude(@place.title)
+  end
+  
   def create
     @title = params[:title]
     add_latitude_longitude(@title)

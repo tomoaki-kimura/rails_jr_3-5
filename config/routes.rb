@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'toppages#index'
   
-  resources :places, only: [:create, :destroy]
+  resources :places, only: [:show, :create, :destroy]
 end

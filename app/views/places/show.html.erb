@@ -1,0 +1,41 @@
+<h3 class="my-4"><%= @place.title %>の詳細</h3>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>場所</th>
+      <td><%= @place.title %></th>
+    </tr>
+    <tr>
+      <th>緯度</th>
+      <td><%= @place.latitude %></td>
+    </tr>
+    <tr>
+      <th>経度</th>
+      <td><%= @place.longitude %></td>
+    </tr>
+    <tr>
+      <th>メモ</th>
+      <td><%= @place.memo %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div id="map" style="width: 100%; height: 500px;"></div></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "戻る", root_path, data: {"turbolinks" => false}, class: "btn btn-success" %>
+
+<script>
+    const map = L.map('map').setView([<%= @place.latitude %>, <%= @place.longitude %>], 13);
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+        }).addTo(map);
+    L.marker(
+        [<%= @place.latitude %>, <%= @place.longitude %>],
+        {title: "marker-title"}
+    ).addTo(map)
+        .bindPopup("<%= @place.title %>")
+        .openPopup();
+</script>
